@@ -28,13 +28,27 @@
 </template>
 
 <script setup lang="ts">
+import { useUserStore } from '@/stores/user';
+import { ElMessage } from 'element-plus';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const name = ref('');
 const password = ref('');
 
-const login = () => {
+const userStore = useUserStore();
+
+const router = useRouter();
+
+async function login() {
   console.log(name.value, password.value);
+  const res = await userStore.login(name.value, password.value);
+  if (res) {
+    ElMessage.success('登录成功');
+    router.push('/index')
+  } else {
+    ElMessage.error('登录失败');
+  }
 }
 </script>
 

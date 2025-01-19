@@ -55,7 +55,15 @@ const router = createRouter({
           path: "management",
           name: "Management",
           components: {
-            default: () => import("@/views/Em_De_Management.vue"),
+            default: () => import("@/views/Management.vue"),
+            sidebar: () => import("@/components/Sidebar.vue"),
+            header: () => import("@/components/Header.vue"),
+          }
+        }, {
+          path: "search",
+          name: "Search",
+          components: {
+            default: () => import("@/views/Search.vue"),
             sidebar: () => import("@/components/Sidebar.vue"),
             header: () => import("@/components/Header.vue"),
           }
